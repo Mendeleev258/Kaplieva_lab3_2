@@ -24,11 +24,12 @@ template <typename T>
 void my_swap(T& a, T& b);
 void swap_words(char* word1, int len1, char* word2, int len2);
 void simple_choice_sort(char matrix[][m], int len[], int row);
+void task(std::ifstream& input, std::ofstream& output);
 
 
 int main()
 {
-	std::ifstream input("C:/Users/jrosl/source/repos/Mendeleev258/Kaplieva_lab3_2/Kaplieva_lab3_2/inp.txt");
+	std::ifstream input("inp.txt");
 	switch (check_file(input))
 	{
 	case -1:
@@ -39,14 +40,8 @@ int main()
 		break;
 	default:
 		std::cout << "Correct file\n";
-		char matrix[35][15]; 
-		int len[35];
-		int row{};
-		bool draft = false;
-		create_matrix(input, matrix, len, row);
-		simple_choice_sort(matrix, len, row);
-		std::ofstream output("C:/Users/jrosl/source/repos/Mendeleev258/Kaplieva_lab3_2/Kaplieva_lab3_2/out.txt");
-		out_matrix(output, matrix, len, row);
+		std::ofstream output("out.txt");
+		task(input, output);
 		output.close();
 	}
 }
@@ -132,11 +127,10 @@ bool correct_word(char* word, int len)
 	bool res{ true };
 	while (i < len && res)
 	{
-		if (i % 2 == 0 && is_vowel(word[i]))
-			res = false;
+		if (i % 2 == 0)
+			res = !is_vowel(word[i]);
 		else
-			if (i % 2 != 0 && !is_vowel(word[i]))
-				res = false;
+			res = is_vowel(word[i]);
 		++i;
 	}
 	return res;
@@ -182,4 +176,12 @@ void simple_choice_sort(char matrix[][m], int len[], int row)
 			}
 }
 
-
+void task(std::ifstream& input, std::ofstream& output)
+{
+	char matrix[35][15];
+	int len[35];
+	int row{};
+	create_matrix(input, matrix, len, row);
+	simple_choice_sort(matrix, len, row);
+	out_matrix(output, matrix, len, row);
+}

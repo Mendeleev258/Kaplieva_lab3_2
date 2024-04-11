@@ -129,6 +129,10 @@
   <ItemGroup>
     <ClCompile Include="Kaplieva_lab3_2.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="inp.txt" />
+    <Text Include="out.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
