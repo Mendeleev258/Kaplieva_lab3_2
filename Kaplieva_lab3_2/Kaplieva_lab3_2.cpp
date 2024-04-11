@@ -178,8 +178,8 @@ void simple_choice_sort(char matrix[][m], int len[], int row)
 
 void task(std::ifstream& input, std::ofstream& output)
 {
-	char matrix[35][15];
-	int len[35];
+	char matrix[n][m];
+	int len[n];
 	int row{};
 	create_matrix(input, matrix, len, row);
 	simple_choice_sort(matrix, len, row);
